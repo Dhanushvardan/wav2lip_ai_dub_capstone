@@ -1,3 +1,42 @@
-.App {
+.container {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+}
+
+.myId {
+    margin-right: 5rem;
+    border-radius: 5px;
+    margin-top: 10vh;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: coral;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 2rem;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.call-button {
     text-align: center;
+    margin-top: 2rem;
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10vh;
+    margin-left: 10vw;
+}
+
+.caller {
+    text-align: center;
+    color: #fff;
+}
+
+body {
+    background: #818589;
+    /* fallback for old browsers */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
