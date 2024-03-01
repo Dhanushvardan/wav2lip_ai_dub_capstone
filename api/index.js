@@ -5,7 +5,7 @@ const http = require("http")
 const server = http.createServer(app)
 const io = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://wav2lip-ai-dub-capstone.onrender.com",
         methods: ["GET", "POST"]
     }
 })
