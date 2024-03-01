@@ -21,5 +21,5 @@ def handle_answer_call(data):
     emit("callAccepted", data["signal"], room=data["to"])
 
 if __name__ == "__main__":
-    socketio.run(app, port=5000)
+    socketio.run(app, port=5000,allow_unsafe_werkzeug=True)
     print("running")
