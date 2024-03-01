@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import "./App.scss";
 
 // const socket = io.connect("https://socket-backend-jlbk.onrender.com");
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://python-backend-9f64.onrender.com");
 function App() {
   const [me, setMe] = useState("");
   const [stream, setStream] = useState();
