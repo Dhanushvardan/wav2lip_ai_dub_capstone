@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_socketio import SocketIO, emit
-from flask_cors import CORS
+
 
 
 app = Flask(__name__)
