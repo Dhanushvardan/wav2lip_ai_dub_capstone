@@ -12,6 +12,7 @@ socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com
 @socketio.on("connect")
 def handle_connect():
     emit("me", request.sid)
+    print("Client is connected" + request.sid)
 
 @socketio.on("disconnect")
 def handle_disconnect():
@@ -20,6 +21,7 @@ def handle_disconnect():
 @socketio.on("callUser")
 def handle_call_user(data):
     emit("callUser", {"signal": data["signalData"], "from": data["from"], "name": data["name"]}, room=data["userToCall"])
+    print("call user request is received")
 
 @socketio.on("answerCall")
 def handle_answer_call(data):
