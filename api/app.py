@@ -5,7 +5,7 @@ import asyncio
 
 app = Flask(__name__)
 # socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com")
-socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="https://frontend-cap.onrender.com")
+socketio = SocketIO(app, async_mode='gevent', cors_allowed_origins="https://frontend-cap.onrender.com")
 
 
 
