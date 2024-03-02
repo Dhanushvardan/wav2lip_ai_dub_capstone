@@ -1,18 +1,16 @@
 from flask import Flask, request
 from flask_socketio import SocketIO, emit
-import asyncio
+
 
 
 app = Flask(__name__)
-# socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com")
-socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="https://frontend-cap.onrender.com")
+socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com")
 
 
 
 
 @socketio.on("connect")
-async def handle_connect():
-    await asyncio.sleep(1)
+def handle_connect():
     emit("me", request.sid)
     print("Client is connected" + request.sid)
 
@@ -20,23 +18,13 @@ async def handle_connect():
 def handle_disconnect():
     emit("callEnded", broadcast=True)
 
-# @socketio.on("callUser")
-# def handle_call_user(data):
-#     emit("callUser", {"signal": data["signalData"], "from": data["from"], "name": data["name"]}, room=data["userToCall"])
-#     print("call user request is received")
-    
-
-
 @socketio.on("callUser")
-async def handle_call_user(data):
-    await asyncio.sleep(1)  # Simulate a long-running task asynchronously
+def handle_call_user(data):
     emit("callUser", {"signal": data["signalData"], "from": data["from"], "name": data["name"]}, room=data["userToCall"])
     print("call user request is received")
 
-
 @socketio.on("answerCall")
-async def handle_answer_call(data):
-    await asyncio.sleep(1)
+def handle_answer_call(data):
     emit("callAccepted", data["signal"], room=data["to"])
 
 if __name__ == "__main__":
