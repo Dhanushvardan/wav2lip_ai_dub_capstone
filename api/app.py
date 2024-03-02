@@ -11,7 +11,8 @@ socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="https://fr
 
 
 @socketio.on("connect")
-def handle_connect():
+async def handle_connect():
+    await asyncio.sleep(1)
     emit("me", request.sid)
     print("Client is connected" + request.sid)
 
