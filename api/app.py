@@ -1,10 +1,11 @@
 from flask import Flask, request
 from flask_socketio import SocketIO, emit
-
+import eventlet
+eventlet.monkey_patch()
 
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com")
+socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com",message_queue='redis://')
 
 
 
