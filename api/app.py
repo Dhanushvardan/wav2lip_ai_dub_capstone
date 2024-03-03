@@ -5,7 +5,7 @@ eventlet.monkey_patch()
 
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com",message_queue='redis://')
+socketio = SocketIO(app, cors_allowed_origins="https://frontend-cap.onrender.com")
 
 
 
