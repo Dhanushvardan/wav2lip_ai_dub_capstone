@@ -18,7 +18,7 @@ function App() {
   const [idToCall, setIdToCall] = useState("");
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState("");
-  const [stStreaming, setStStreaming] = useState(false);
+  const [stStreaming, setStStreaming] = useState(true);
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
