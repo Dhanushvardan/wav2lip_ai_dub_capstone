@@ -58,9 +58,9 @@ function App() {
       });
     });
     peer.on("stream", (stream) => {
-      if (stStreaming) {
-        userVideo.current.srcObject = stream;
-      }
+      // if (stStreaming) {
+      //   userVideo.current.srcObject = stream;
+      // }
     });
     socket.on("callAccepted", (signal) => {
       setCallAccepted(true);
@@ -81,9 +81,9 @@ function App() {
       socket.emit("answerCall", { signal: data, to: caller });
     });
     peer.on("stream", (stream) => {
-      // if (stStreaming) {
-      //   userVideo.current.srcObject = stream;
-      // }
+      if (stStreaming) {
+        userVideo.current.srcObject = stream;
+      }
     });
 
     peer.signal(callerSignal);
