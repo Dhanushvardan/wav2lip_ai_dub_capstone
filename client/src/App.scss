@@ -3,6 +3,18 @@
     grid-template-columns: 7fr 3fr;
 }
 
+.stStream {
+    display: flex;
+    border: 1px solid black;
+    height: 5vh;
+    width: 20vw;
+    margin-top: 10vh;
+    margin-left: 8vw;
+    .stBut {
+        margin-left: 6vw;
+    }
+}
+
 .myId {
     margin-right: 5rem;
     border-radius: 5px;

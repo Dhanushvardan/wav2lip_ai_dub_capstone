@@ -7,6 +7,7 @@ import "./App.scss";
 // const socket = io.connect("https://socket-backend-jlbk.onrender.com");
 //const socket = io.connect("https://backend-cap-utts.onrender.com");
 const socket = io.connect("https://backend-testing-g6ch.onrender.com");
+// const socket = io.connect("http://localhost:5000");
 function App() {
   const [me, setMe] = useState("");
   const [stream, setStream] = useState();
@@ -17,6 +18,7 @@ function App() {
   const [idToCall, setIdToCall] = useState("");
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState("");
+  const [stStreaming, setStStreaming] = useState(false);
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
@@ -41,6 +43,13 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    if (stStreaming) {
+      userVideo.current.srcObject = stream;
+      console.log(me);
+    }
+  }, [stStreaming]);
+
   const callUser = (id) => {
     const peer = new Peer({
       initiator: true,
@@ -56,7 +65,9 @@ function App() {
       });
     });
     peer.on("stream", (stream) => {
-      userVideo.current.srcObject = stream;
+      // if (stStreaming) {
+      //   userVideo.current.srcObject = stream;
+      // }
     });
     socket.on("callAccepted", (signal) => {
       setCallAccepted(true);
@@ -77,7 +88,9 @@ function App() {
       socket.emit("answerCall", { signal: data, to: caller });
     });
     peer.on("stream", (stream) => {
-      userVideo.current.srcObject = stream;
+      // if (stStreaming) {
+      //   userVideo.current.srcObject = stream;
+      // }
     });
 
     peer.signal(callerSignal);
@@ -94,6 +107,7 @@ function App() {
       <h1 style={{ textAlign: "center", color: "#fff" }}>
         Video call Interface for Capstone using webRTC
       </h1>
+
       <div className="container">
         <div className="video-container">
           <div className="video">
@@ -167,6 +181,17 @@ function App() {
             </div>
           ) : null}
         </div>
+      </div>
+      <div className="stStream">
+        <button
+          className="stBut"
+          onClick={(e) => {
+            setStStreaming(!stStreaming);
+            console.log(stStreaming);
+          }}
+        >
+          Start streaming
+        </button>
       </div>
     </>
   );
