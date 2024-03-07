@@ -43,13 +43,6 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    if (stStreaming) {
-      userVideo.current.srcObject = stream;
-      console.log(me);
-    }
-  }, [stStreaming]);
-
   const callUser = (id) => {
     const peer = new Peer({
       initiator: true,
@@ -65,9 +58,9 @@ function App() {
       });
     });
     peer.on("stream", (stream) => {
-      // if (stStreaming) {
-      //   userVideo.current.srcObject = stream;
-      // }
+      if (stStreaming) {
+        userVideo.current.srcObject = stream;
+      }
     });
     socket.on("callAccepted", (signal) => {
       setCallAccepted(true);
